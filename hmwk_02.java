@@ -1,10 +1,16 @@
-// Dalio, Brian A.
-// dalioba
-// 2020-03-24
+// Mendoza, Jacinto J.
+// jjm2349
+// 2020-03-27
 
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.regex.*;
+
+// Commands:
+// javac hmwk_02.java
+// java hmwk_02 inputdata.txt
+
 
 //----------------------------------------------------------
 public class hmwk_02 {
@@ -13,8 +19,31 @@ public class hmwk_02 {
     // Replace the following line with your code to classify
     // the string in 'token' according to your three Regular
     // Expressions and print the appropriate message.
+    boolean PayJay = false;
+    boolean Rattle = false;
+    boolean Tork = false;
+    PayJay = Pattern.matches("", token);
+    Rattle = Pattern.matches("", token);
+    Tork = Pattern.matches("", token);
 
-    System.out.println( ">" + token + "< is the proposed token." );
+    if(PayJay == true)
+    {
+      System.out.println(">"+token+"< matches PayJay.");
+    }
+    else if(Rattle == true)
+    {
+      System.out.println(">"+token+"< matches Rattle.");
+    }
+    else if(Tork == true)
+    {
+      System.out.println(">"+token+"< matches Tork.");
+    }
+    else
+    {
+      System.out.println(">"+token+"< does not match.");
+    }
+
+    //System.out.println( ">" + token + "< is the proposed token." );
   }
 
   //--------------------------------------------------------
