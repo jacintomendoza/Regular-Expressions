@@ -1,0 +1,276 @@
+#----------------------------------------------------------------------
+Programming Assignment 02
+
+#----------------------------------------------------------------------
+Purpose:
+
+  * Demonstrate once again elementary understanding of Regular
+    Expressions and how to use them in the useful languages, C++
+    and Java.
+
+#----------------------------------------------------------------------
+Background:
+
+  * The example input file will have multiple proposed tokens on
+    each line.  There also might be lines with no proposed tokens
+    and / or just or extra whitespace.
+
+  * The proposed tokens will be separated by whitespace, which is
+    to be ignored.
+
+  * Your program will consider successive tokens from the input
+    file and classify them as 'PayJay', 'Rattle', 'Tork', or
+    'does not match'.
+
+  * A PayJay is an odd number of percent signs '%' or asterisks
+    '*' followed by one or more 'p' or 'J' letters followed by
+    'JAY' if it was only 'J' letters, 'pay' if it was only 'p'
+    letters, and nothing else if it was a mixture of both 'p' and
+    'J' characters.
+
+    (FYI:  "an odd number" means 1 or 3 or 5 or 7 or ..., which
+     can also be stated as 2n+1, where n >= 0.)
+
+  * A Rattle is a plus sign '+' or a minus sign '-' or a colon ':'
+    followed by an even number of hex digits '0'-'9', 'A'-'F',
+    followed by a plus sign '+' or a minus sign '-' or a colon
+    ':' BUT IT CANNOT END WITH THE SAME CHARACTER WITH WHICH IT
+    STARTED.  That is, if it begins with '+', it must end with '-'
+    or ':', and so forth.
+
+    (FYI:  "an even number" means 0 or 2 or 4 or 6 or ..., which
+     can also be stated as 2n, where n >= 0.)
+
+  * A Tork is a vertical bar '|' followed by zero or more vowels
+    'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u', followed by
+    an asterisk '*' when the all of the vowels are uppercase, an
+    equals sign '=' when all of the vowels are lowercase, or a
+    dollar sign '$' when there are no letters at all.  Mixing
+    lowercase and uppercase vowels is not allowed.
+
+#----------------------------------------------------------------------
+Examples:
+
+  %*%pppay        -- legal PayJay
+  ***JJJAY        -- legal PayJay
+  **%%%pJpJ       -- legal PayJay
+
+  **JJAY          -- illegal PayJay, not odd number of %, * marks.
+  *%*Jpay         -- illegal PayJay, should have been JAY at end
+  %%%**JpJpJAY    -- illegal PayJay, should have had no JAY at end
+
+  +1A3C-          -- legal Rattle
+  -CEDE99:        -- legal Rattle
+  :FEEDBEEF+      -- legal Rattle
+
+  +00+            -- illegal Rattle, begins and ends with same character
+  :123+           -- illegal Rattle, odd number of hex digits
+  -1a3C:          -- illegal Rattle, not all uppercase hex digits
+
+  |EIEIO*         -- legal Tork
+  |aioue=         -- legal Tork
+  |$              -- legal Tork
+
+  AIUEO*          -- illegal Tork, no | at front
+  |mackle*        -- illegal Tork, should be = at end
+  |AeIoUoIeA=     -- illegal Tork, can't mix lowercase and uppercase
+
+#----------------------------------------------------------------------
+Tasks:
+
+  1. Download HMWK_02_dalioba.zip from Canvas.
+
+  2. Unzip the file somewhere convenient.
+
+  3. Change 'dalioba' in the name of the directory to your NetID.
+     (Your NetID is three letters followed by four or five digits.
+      The directory name will now be something like
+      'hmwk_02_abc1234', with YOUR NetID instead of 'abc1234'.)
+
+  4. Look in that directory.
+
+  5. Change the header lines in the skeleton files
+     hmwk_02.java / .cc :
+
+      -- Line 1:  Family name first, then a comma, then
+                  personal name.
+
+      -- Line 2:  Your NetID.
+
+      -- Line 3:  The date you edited the file in the format
+                  YYYY-MM-DD.
+
+     These must remain the first three lines of each file.
+
+  6. Run the files you just changed with the provided
+     'inputdata.text' as the input file.
+
+  7. Observe the following output (it will be the same no matter
+     which language you picked):
+
+processing tokens from ../inputdata.txt ...
+>%*%pppay< is the proposed token.
+>***JJJAY< is the proposed token.
+>**%%%pJpJ< is the proposed token.
+>**JJAY< is the proposed token.
+>*%*Jpay< is the proposed token.
+>%%%**JpJpJAY< is the proposed token.
+>+1A3C-< is the proposed token.
+>-CEDE99:< is the proposed token.
+>:FEEDBEEF+< is the proposed token.
+>+00+< is the proposed token.
+>:123+< is the proposed token.
+>-1a3C:< is the proposed token.
+>|EIEIO*< is the proposed token.
+>|aioue=< is the proposed token.
+>|$< is the proposed token.
+>AIUEO*< is the proposed token.
+>|mackle*< is the proposed token.
+>|AeIoUoIeA=< is the proposed token.
+
+  8. Now, change the contents of processToken() function in each
+     of the hmwk_02.java and .cc files to use the regular expression
+     support of the corresponding language so that the following
+     output is generated for the 'inputdata.txt' test case file.
+
+processing tokens from inputdata.txt ...
+>%*%pppay< matches PayJay.
+>***JJJAY< matches PayJay.
+>**%%%pJpJ< matches PayJay.
+>**JJAY< does not match.
+>*%*Jpay< does not match.
+>%%%**JpJpJAY< does not match.
+>+1A3C-< matches Rattle.
+>-CEDE99:< matches Rattle.
+>:FEEDBEEF+< matches Rattle.
+>+00+< does not match.
+>:123+< does not match.
+>-1a3C:< does not match.
+>|EIEIO*< matches Tork.
+>|aioue=< matches Tork.
+>|$< matches Tork.
+>AIUEO*< does not match.
+>|mackle*< does not match.
+>|AeIoUoIeA=< does not match.
+
+  9. You should get the same output for each of the two languages.
+     Make your output match this format EXACTLY since when your
+     solutions are tested, their output will be checked using
+     diff.
+
+#----------------------------------------------------------------------
+Submission:
+
+Make a zipfile of your 'hmwk_02_abc1234' directory (where
+'abc1234' is replaced with YOUR NetID) and submit it on Canvas
+as your results for this assignment.  Your submission should be a
+zipfile that has exactly one item in it, a directory named
+'hmwk_02_abc1234' (where 'abc1234' is YOUR NetID).  Inside that
+directory should be two source files, hmwk_02.java and hmwk_02.cc.
+
+#----------------------------------------------------------------------
+Hints:
+  1. Ensure your programs compile and run correctly.  Not
+     compiling or not generating the correct output will cost you
+     points.
+
+     Ensure your output messages match the format shown above when
+     you change the processToken() function.  The output is going
+     to be checked by a program, so it has to match EXACTLY.
+
+     After you write your programs, use diff or fc to compare
+     your output to the supplied 'outputdata.txt'.  It must match
+     EXACTLY or you will be penalized points.
+
+     ('EXACTLY' means character-by-character the same.  No, e.g.,
+      differences in spacing, no changes in wording, no changes
+      in punctuation, no changes in capitalization, and so forth.
+      Check your output against the 'outputdata.txt' file!)
+
+  2. Ensure that you update the three header lines at the top of
+     each of the source files with YOUR name (family name first,
+     then a comma, then your personal name), YOUR NetID, and the
+     date you edit the file (in the format YYYY-MM-DD).
+
+     Not updating the header lines properly or moving them from
+     being the first three line will cost you points.
+
+  3. DO NOT change anything in the main() routines in the C++ or
+     Java files.
+
+     Your programs will be tested from the command line on
+     different input files, so do not change the command line
+     argument processing.  If your programs do not run correctly
+     when run from the command line and supplying the input file
+     name as an argument, you will score ZERO points.
+
+  4. You might use some lines of static code aside from changing
+     the contents of processToken().  (This will depend on how you
+     decide to do the regular expressions.)
+
+  5. Ensure you use the regular expression support of the
+     language.  Programs that do not do all of their matching
+     using the regular expression support of the corresponding
+     language will score ZERO points.
+
+     Ensure that you use ONLY the 5 basic items that a Regular
+     Expression can be (character, empty string, concatenation,
+     alternation (|), and Kleene star (*)) and the notational
+     conveniences optional (?), Kleene plus (+), and character
+     classes ([]).  Programs that use other notation or extensions
+     will score ZERO points.
+
+     In particular, you are NOT allowed to use {} notation!
+
+     Yes, these categories can be written as regular expressions
+     using only the given constructs.  You can use the anchor
+     marks '^' and '$' as well as parenthesization.
+
+  6. These programs are not complex.  For C++, the processToken()
+     routine is 15 lines of code, including three lines of static
+     declarations.  In the Java case, the body of the
+     processToken() routine is 9 lines of code.
+
+     You do not have to match the exact number of lines of code
+     that the reference solutions have.  You may have a little
+     more or a little less, BUT if you find yourself writing lots
+     more code than this, you're probably going down the wrong
+     path and should seek some guidance.
+
+  7. After you write your regular expressions, make up some test
+     cases of your own to ensure that your REs really match the
+     descriptions given above.  The test cases in 'inputdata.txt'
+     are useful, but they are NOT comprehensive.  Make up some
+     more of your own.
+
+  8. Ensure your submission to Canvas is packaged EXACTLY as
+     described above.
+
+      -- Your submission should be a ZIP FILE (not a tar, rar, gz,
+         or any other kind of compressed file).
+
+      -- The zip file should be named 'hmwk_02_abc1234.zip' (with
+         'abc1234' replaced with YOUR NetID).
+
+      -- This zip file should have ONE item in it, a directory
+         named 'hmwk_02_abc1234'  (with 'abc1234' replaced with
+         YOUR NetID).
+
+      -- Your source files should be in that directory.  The
+         source files should be named hmwk_04.java / .cc.
+
+     Submissions in the wrong format score ZERO points.
+
+  9. After you submit your zip file on Canvas, download it from
+     Canvas and check that your submission is in the proper
+     format, that the programs run and print the correct output,
+     and that you updated the header lines correctly in each of
+     the source files.
+
+ 10. Are you CERTAIN you complied with all of these nit-picking
+     instructions?  Really?  Maybe you ought to check just one
+     more time. :)
+
+#----------------------------------------------------------------------
+
+

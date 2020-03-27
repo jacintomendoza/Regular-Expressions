@@ -1,0 +1,19 @@
+processing tokens from inputdata.txt ...
+>%*%pppay< matches PayJay.
+>***JJJAY< matches PayJay.
+>**%%%pJpJ< matches PayJay.
+>**JJAY< does not match.
+>*%*Jpay< does not match.
+>%%%**JpJpJAY< does not match.
+>+1A3C-< matches Rattle.
+>-CEDE99:< matches Rattle.
+>:FEEDBEEF+< matches Rattle.
+>+00+< does not match.
+>:123+< does not match.
+>-1a3C:< does not match.
+>|EIEIO*< matches Tork.
+>|aioue=< matches Tork.
+>|$< matches Tork.
+>AIUEO*< does not match.
+>|mackle*< does not match.
+>|AeIoUoIeA=< does not match.

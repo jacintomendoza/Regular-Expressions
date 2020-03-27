@@ -1,0 +1,115 @@
+==========
+Once again, there have been some questions about the definitions
+of the three token categories.  Here's a restatement of the
+categories broken down into each of their parts.
+
+  * "PayJay"
+
+    - An odd number of percent signs '%' or asterisks '*'
+      followed by
+
+    - One or more 'p' or 'J' letters followed by
+
+    - 'JAY' if it was only 'J' letters, 'pay' if it was only 'p'
+      letters, and nothing else if it was a mixture of both 'p'
+      and 'J' characters.
+
+    (FYI:  "an odd number" means 1 or 3 or 5 or 7 or ..., which
+     can also be stated as 2n+1, where n >= 0.)
+
+  * "Rattle"
+
+    - A plus sign '+' or a minus sign '-' or a colon ':'
+      followed by
+
+    - An even number of hex digits '0'-'9', 'A'-'F' followed by
+
+    - A plus sign '+' or a minus sign '-' or a colon ':' BUT IT
+      CANNOT END WITH THE SAME CHARACTER WITH WHICH IT STARTED.
+      That is, if it begins with '+', it must end with '-' or ':',
+      and so forth.
+
+    (FYI:  "an even number" means 0 or 2 or 4 or 6 or ..., which
+     can also be stated as 2n, where n >= 0.)
+
+  * "Tork"
+
+    - A vertical bar '|' followed by
+
+    - Zero or more vowels 'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i',
+      'o', 'u', followed by
+
+    - An asterisk '*' when the all of the vowels are uppercase, an
+      equals sign '=' when all of the vowels are lowercase, or a
+      dollar sign '$' when there are no letters at all.  Mixing
+      lowercase and uppercase vowels is not allowed.
+
+==========
+When constructing your regular expressions, pay careful attention
+to:
+
+  * The quantities "a", "an", "one or more", and "zero or more".
+
+  * The exact allowed characters, including case (capitalization).
+
+==========
+Finally,
+
+  * Ensure that your solution uses the regular expression support
+    of the language when matching.  Solutions that do not use the
+    language's built-in regular expression matching support will
+    score ZERO points.  Do NOT write your own specialized string
+    or character checking code.  That will score ZERO points.
+
+    Ensure that you use ONLY
+
+      (1) the 5 basic items that a Regular Expression can be
+          (character, empty string, concatenation, alternation
+          (|), and Kleene star (*))
+
+      (2) the notational conveniences optional (?), Kleene plus
+          (+), and character classes ([])
+
+      (3) the anchors ^ and $
+
+      (4) parenthesization.
+
+    In particular, you are NOT allowed to use {} notation,
+    look-ahead, look-behind, conditionals, etc.
+
+    Yes, these categories can be written as simple regular
+    expressions using only the given constructs.  You do NOT need
+    (and aren't allowed to use) any other constructs.
+
+    Programs that use other constructs or extensions will score
+    ZERO points.
+
+  * Ensure that your output for the supplied inputdata.txt file
+    matches that of the supplied outputdata.txt file EXACTLY.
+    Check this match using diff (or fc).  You will lose points if
+    your output does not match EXACTLY.
+
+  * Your submission will be tested against a different set of test
+    strings and you score points based on how many of those test
+    strings your submission categorizes correctly.  This test will
+    be done by running your program from the command line and
+    supplying the name of the evaluation file as an argument.  If
+    your program doesn't run correctly under these circumstances,
+    it will score ZERO points.
+
+  * Be sure to test your submission using examples you have made
+    up yourself.  Just because you correctly process inputdata.txt
+    does not mean your regular expressions are 100% correct.  Be
+    suspicious!
+
+  * You do not need to add imports of any other libraries to the
+    Java version to complete this assignment.  Change only the
+    body of the processToken() function.
+
+  * This homework must be submitted before class starts on
+    Thursday, 2 April.  No submissions will be accepted after
+    class starts on Thursday, 2 April. Do not submit this
+    assignment late. You will receive ZERO points.
+
+==========
+
