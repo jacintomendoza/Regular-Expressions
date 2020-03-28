@@ -1,10 +1,12 @@
-// Dalio, Brian A.
-// dalioba
-// 2020-03-24
+// Mendoza, Jacinto J.
+// jjm2349
+// 2020-03-27
 
 #include <fstream>
 #include <iostream>
 #include <regex>
+
+// Source:  geeksforgeeks.org/regex-regular-expression-in-c/
 
 using namespace std;
 
@@ -15,7 +17,28 @@ void processToken( string token )
   // the string in 'token' according to your three Regular
   // Expressions and print the appropriate message.
 
-  cout << ">" << token << "< is the proposed token.\n";
+  regex PayJay("(%|\\*)(%%|\\*\\*|%\\*|\\*%)*((J(J)*AY)|(p(p)*ay)|(J|p)*)");
+  regex Rattle("");
+  regex Tork("");
+
+  if (regex_match(token, PayJay))
+  {
+    cout << ">" << token << "< matches PayJay.\n";
+  }
+  else if(regex_match(token, Rattle))
+  {
+    cout << ">" << token << "< matches Rattle.\n";
+  }
+  else if(regex_match(token, Tork))
+  {
+    cout << ">" << token << "< matches Tork.\n";
+  }
+  else
+  {
+    cout << ">" << token << "< does not match.\n";
+  }
+
+  //cout << ">" << token << "< is the proposed token.\n";
 }
 
 //----------------------------------------------------------

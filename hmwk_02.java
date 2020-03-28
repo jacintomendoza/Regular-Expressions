@@ -5,7 +5,7 @@
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.Arrays;
-import java.util.regex.*;
+//import java.util.regex.*;
 
 // Commands:
 // javac hmwk_02.java
@@ -22,9 +22,9 @@ public class hmwk_02 {
     boolean PayJay = false;
     boolean Rattle = false;
     boolean Tork = false;
-    PayJay = Pattern.matches("", token);
-    Rattle = Pattern.matches("", token);
-    Tork = Pattern.matches("", token);
+    PayJay = token.matches("(%|\\*)(%%|\\*\\*|%\\*|\\*%)*((J(J)*AY)|(p(p)*ay)|(J|p)*)");
+    Rattle = token.matches("^(\\+|-|:)$");
+    Tork = token.matches("");
 
     if(PayJay == true)
     {
