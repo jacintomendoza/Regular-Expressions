@@ -17,9 +17,9 @@ void processToken( string token )
   // the string in 'token' according to your three Regular
   // Expressions and print the appropriate message.
 
-  regex PayJay("(%|\\*)(%%|\\*\\*|%\\*|\\*%)*((J(J)*AY)|(p(p)*ay)|(J|p)*)");
-  regex Rattle("");
-  regex Tork("");
+  regex PayJay("^(%|\\*)(%%|\\*\\*|%\\*|\\*%)*((J(J)*AY)|(p(p)*ay)|(J|p)*)$");
+  regex Rattle("^(\\+([0-9A-F][0-9A-F])*(\\-|:))|(\\-([0-9A-F][0-9A-F])*(:|\\+))|(:([0-9A-F][0-9A-F])*(\\-|\\+))$");
+  regex Tork("^(\\|[AEIOU]*\\*)|(\\|[aeiou]*=)|(\\|\\$)$");
 
   if (regex_match(token, PayJay))
   {

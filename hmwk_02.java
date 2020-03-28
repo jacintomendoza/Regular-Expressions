@@ -22,9 +22,11 @@ public class hmwk_02 {
     boolean PayJay = false;
     boolean Rattle = false;
     boolean Tork = false;
-    PayJay = token.matches("(%|\\*)(%%|\\*\\*|%\\*|\\*%)*((J(J)*AY)|(p(p)*ay)|(J|p)*)");
-    Rattle = token.matches("^(\\+|-|:)$");
-    Tork = token.matches("");
+    PayJay = token.matches("^(%|\\*)(%%|\\*\\*|%\\*|\\*%)*((J(J)*AY)|(p(p)*ay)|(J|p)*)$");
+    Rattle = token.matches("^(\\+([0-9A-F][0-9A-F])*(\\-|:))|(\\-([0-9A-F][0-9A-F])*(:|\\+))|(:([0-9A-F][0-9A-F])*(\\-|\\+))$");
+    Tork = token.matches("^(\\|[AEIOU]*\\*)|(\\|[aeiou]*=)|(\\|\\$)$");
+
+    // Rattle: ("^(\\+|-|:)$");
 
     if(PayJay == true)
     {
